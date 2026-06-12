@@ -1,0 +1,12 @@
+{
+  "name": "customer-service",
+  "version": "1.0.0",
+  "description": "Customer API for the Istio API gateway demo",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
