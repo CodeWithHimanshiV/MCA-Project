@@ -1,0 +1,32 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: customer-service
+  namespace: api-gateway-demo
+spec:
+  host: customer-service.api-gateway-demo.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: order-service
+  namespace: api-gateway-demo
+spec:
+  host: order-service.api-gateway-demo.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: payment-service
+  namespace: api-gateway-demo
+spec:
+  host: payment-service.api-gateway-demo.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
