@@ -1,0 +1,38 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: api-routes
+  namespace: api-gateway-demo
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - api-gateway
+  http:
+    - name: customer-route
+      match:
+        - uri:
+            prefix: /api/customers
+      route:
+        - destination:
+            host: customer-service.api-gateway-demo.svc.cluster.local
+            port:
+              number: 8080
+    - name: order-route
+      match:
+        - uri:
+            prefix: /api/orders
+      route:
+        - destination:
+            host: order-service.api-gateway-demo.svc.cluster.local
+            port:
+              number: 8080
+    - name: payment-route
+      match:
+        - uri:
+            prefix: /api/payments
+      route:
+        - destination:
+            host: payment-service.api-gateway-demo.svc.cluster.local
+            port:
+              number: 8080
